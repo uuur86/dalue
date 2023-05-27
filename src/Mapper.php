@@ -29,7 +29,7 @@ class Mapper
             }
 
             if (is_array($path)) {
-                $value = self::map($path, $callback);
+                $value = self::map($data, $path, $callback);
 
                 if ($has_many) {
                     $value = self::mergeColumns($value);
