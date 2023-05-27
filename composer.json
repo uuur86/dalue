@@ -1,0 +1,35 @@
+{
+  "description": "PHP Data mapper.",
+  "name": "uuur86/dalue",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "support": {
+    "source": "https://github.com/uuur86/dalue"
+  },
+  "authors": [
+    {
+      "name": "Uğur Biçer",
+      "email": "info@ugurbicer.com.tr",
+      "role": "lead"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Dalue\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "symfony/console": "^4.4",
+    "phpunit/phpunit": "^8.5",
+    "phpstan/phpstan": "^0.12.25",
+    "phpstan/phpstan-phpunit": "^0.12.8",
+    "phpstan/phpstan-strict-rules": "^0.12.3",
+    "squizlabs/php_codesniffer": "^3.5",
+    "friendsofphp/php-cs-fixer": "^2.16 || ^3.0"
+  }
+}
