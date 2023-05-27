@@ -47,7 +47,7 @@ class Mapper
             // If the $path has a data path
             if (is_string($path) && substr($path, 0, 6) === '@data/') {
                 $path  = strlen($path) > 6 ? substr($path, 6) : '';
-                $value = $this->get($path, '');
+                $value = $data->get($path, '');
             }
 
             $return[$key] = empty($callback) ? $value : $callback($key, $value);
