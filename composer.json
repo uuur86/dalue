@@ -1,36 +1,62 @@
 {
-  "description": "PHP Data mapper.",
-  "name": "uuur86/dalue",
-  "type": "library",
-  "license": "GPL-3.0-or-later",
-  "support": {
-    "source": "https://github.com/uuur86/dalue"
-  },
-  "authors": [
-    {
-      "name": "Uğur Biçer",
-      "email": "info@ugurbicer.com.tr",
-      "role": "lead"
+    "name": "uuur86/dalue",
+    "description": "Map nested arrays, objects and JSON documents into a new structure with a declarative schema.",
+    "type": "library",
+    "keywords": [
+        "mapper",
+        "data-mapper",
+        "transform",
+        "schema",
+        "json",
+        "array",
+        "nested",
+        "strobj"
+    ],
+    "homepage": "https://github.com/uuur86/dalue",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Uğur Biçer",
+            "email": "info@ugurbicer.com.tr",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/uuur86/dalue/issues",
+        "source": "https://github.com/uuur86/dalue",
+        "docs": "https://github.com/uuur86/dalue/wiki"
+    },
+    "require": {
+        "php": ">=7.4",
+        "uuur86/strobj": "^3.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12 || ^2.0",
+        "phpunit/phpunit": "^9.6",
+        "squizlabs/php_codesniffer": "^3.10 || ^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dalue\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dalue\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse --no-progress",
+        "cs": "phpcs",
+        "cs:fix": "phpcbf",
+        "check": [
+            "@cs",
+            "@phpstan",
+            "@test"
+        ]
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Dalue\\": "src/"
-    }
-  },
-  "require": {
-    "php": ">=7.2",
-    "ext-json": "*",
-    "ext-mbstring": "*",
-    "uuur86/strobj": "^2.1.7"
-  },
-  "require-dev": {
-    "symfony/console": "^4.4",
-    "phpunit/phpunit": "^8.5",
-    "phpstan/phpstan": "^0.12.25",
-    "phpstan/phpstan-phpunit": "^0.12.8",
-    "phpstan/phpstan-strict-rules": "^0.12.3",
-    "squizlabs/php_codesniffer": "^3.5",
-    "friendsofphp/php-cs-fixer": "^2.16 || ^3.0"
-  }
 }
