@@ -4,9 +4,18 @@
 
     <file>src</file>
     <file>tests</file>
+    <file>examples</file>
     <arg name="extensions" value="php" />
     <arg name="colors" />
     <arg value="sp" />
 
     <rule ref="PSR12" />
+
+    <!-- Example scripts are standalone programs that define helpers next to their output code. -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>examples/*</exclude-pattern>
+    </rule>
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>examples/*</exclude-pattern>
+    </rule>
 </ruleset>

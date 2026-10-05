@@ -34,7 +34,7 @@ This runs:
 | --- | --- |
 | `composer cs` | PSR-12 coding standard (`composer cs:fix` fixes most issues) |
 | `composer phpstan` | Static analysis at level 8, PHP 7.4 compatible |
-| `composer test` | PHPUnit test suite |
+| `composer test` | PHPUnit test suite, including the example output checks |
 
 The same checks run on GitHub Actions for PHP 7.4 – 8.5.
 
@@ -46,6 +46,18 @@ The same checks run on GitHub Actions for PHP 7.4 – 8.5.
 - Update `README.md`, `docs/wiki/` and the `Unreleased` section of `CHANGELOG.md`
   when the public behavior changes.
 - Write code, comments and commit messages in English.
+
+## Examples
+
+Every script in `examples/` has its expected output in `examples/output/`, and
+`ExamplesTest` fails when they differ. When you add an example or change
+behavior on purpose, regenerate the output and review the diff:
+
+```sh
+php examples/NN-name.php > examples/output/NN-name.txt
+```
+
+See [examples/README.md](examples/README.md) for details.
 
 ## Documentation
 

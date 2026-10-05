@@ -8,6 +8,7 @@
 - [Callbacks](Callbacks)
 - [Missing Values and Defaults](Missing-Values-and-Defaults)
 - [Recipes](Recipes)
+- [Examples](Examples)
 
 **More**
 - [Upgrading to StrObj 3](Upgrading-to-StrObj-3)

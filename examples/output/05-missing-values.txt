@@ -1,0 +1,18 @@
+== Default for missing paths is null ==
+{
+    "active": false,
+    "balance": 0,
+    "nickname": "",
+    "manager": null,
+    "phone": null
+}
+
+== Custom default for missing paths ==
+{
+    "active": false,
+    "balance": 0,
+    "nickname": "",
+    "manager": null,
+    "phone": "N/A"
+}
+

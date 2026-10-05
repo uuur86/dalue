@@ -1,0 +1,11 @@
+== Mapped user ==
+{
+    "userID": 1,
+    "userName": "John Doe",
+    "userDetails": {
+        "userAge": 30,
+        "userCity": "New York"
+    },
+    "source": "crm"
+}
+

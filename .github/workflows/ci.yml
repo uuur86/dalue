@@ -45,6 +45,9 @@ jobs:
       - name: Run tests
         run: composer test
 
+      - name: Run examples
+        run: composer examples
+
   quality:
     name: Static analysis, coding standard and coverage
     runs-on: ubuntu-latest

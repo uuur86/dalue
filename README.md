@@ -224,11 +224,24 @@ $dynamoDbClient->putItem([
 
 ---
 
+## Examples
+
+Runnable examples live in [`examples/`](examples). Clone the repository and run:
+
+```sh
+composer install
+php examples/01-basic-mapping.php   # one example
+composer examples                   # all examples
+```
+
+Each script's expected output is stored in [`examples/output/`](examples/output) and checked by the test suite. See [examples/README.md](examples/README.md) or the [Examples wiki page](https://github.com/uuur86/dalue/wiki/Examples).
+
 ## Development
 
 ```sh
 composer install
-composer test      # PHPUnit
+composer test      # PHPUnit (includes the example output checks)
+composer examples  # Run all examples
 composer phpstan   # Static analysis
 composer cs        # PSR-12 coding standard
 composer check     # All of the above

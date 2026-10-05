@@ -50,6 +50,7 @@
     },
     "scripts": {
         "test": "phpunit",
+        "examples": "@php examples/run-all.php",
         "phpstan": "phpstan analyse --no-progress",
         "cs": "phpcs",
         "cs:fix": "phpcbf",

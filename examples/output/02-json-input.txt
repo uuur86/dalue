@@ -1,0 +1,22 @@
+== Repository card ==
+{
+    "name": "uuur86/dalue",
+    "owner": "uuur86",
+    "mainTopic": "php",
+    "topics": [
+        "php",
+        "mapper",
+        "json"
+    ],
+    "popularity": {
+        "stars": 42,
+        "forks": 7
+    }
+}
+
+== Invalid JSON is rejected ==
+{
+    "exception": "InvalidArgumentException",
+    "code": 22
+}
+

@@ -29,4 +29,17 @@ var_dump(Mapper::map(StringObjects::instance(['ok' => true]), ['ok' => '@data/ok
 // array(1) { ["ok"]=> bool(true) }
 ```
 
+## Trying the examples
+
+Clone the repository and run the example scripts:
+
+```sh
+git clone https://github.com/uuur86/dalue.git
+cd dalue
+composer install
+composer examples
+```
+
+See [Examples](Examples) for what each script shows and how to verify the output.
+
 Next: [Getting Started](Getting-Started).

@@ -28,5 +28,6 @@ $result = Mapper::map($data, [
 - [Callbacks](Callbacks)
 - [Missing Values and Defaults](Missing-Values-and-Defaults)
 - [Recipes](Recipes)
+- [Examples](Examples)
 - [Upgrading to StrObj 3](Upgrading-to-StrObj-3)
 - [FAQ](FAQ)

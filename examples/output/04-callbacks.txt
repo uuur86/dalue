@@ -1,0 +1,16 @@
+== Casting and formatting values ==
+{
+    "id": 17,
+    "email": "jane.doe@example.com",
+    "price": 19.9,
+    "createdAt": "2026-01-15 08:30:00",
+    "tags": "new,vip"
+}
+
+== Callback order (children first) ==
+[
+    "id",
+    "firstTag",
+    "meta"
+]
+

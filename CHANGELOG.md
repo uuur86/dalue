@@ -20,6 +20,8 @@ The project follows [Semantic Versioning](https://semver.org/).
 - `Mapper::DATA_PREFIX` and `Mapper::COLLECTION_SUFFIX` constants.
 - PHPUnit test suite, PHPStan (level 8), PHP_CodeSniffer (PSR-12) and a GitHub
   Actions CI matrix for PHP 7.4 – 8.5. ([#5])
+- Runnable examples in `examples/` with tested output and a `composer examples`
+  script. ([#8])
 - Wiki pages in `docs/wiki/`, published by GitHub Actions. ([#7])
 - `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.gitattributes` and
   `.gitignore`. ([#6])
@@ -48,3 +50,4 @@ The project follows [Semantic Versioning](https://semver.org/).
 [#5]: https://github.com/uuur86/dalue/issues/5
 [#6]: https://github.com/uuur86/dalue/issues/6
 [#7]: https://github.com/uuur86/dalue/issues/7
+[#8]: https://github.com/uuur86/dalue/issues/8
