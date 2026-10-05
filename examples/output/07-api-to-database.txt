@@ -1,0 +1,45 @@
+== Mapped page ==
+{
+    "page": 1,
+    "total": 3,
+    "users": [
+        {
+            "external_id": 101,
+            "full_name": "Ada Lovelace",
+            "email": "ada@example.com",
+            "is_active": 1
+        },
+        {
+            "external_id": 102,
+            "full_name": "Alan Turing",
+            "email": null,
+            "is_active": 0
+        },
+        {
+            "external_id": 103,
+            "full_name": "Grace Hopper",
+            "email": "grace@example.com",
+            "is_active": 1
+        }
+    ]
+}
+
+== Prepared INSERT ==
+{
+    "sql": "INSERT INTO users (external_id, full_name, email, is_active) VALUES (?, ?, ?, ?), (?, ?, ?, ?), (?, ?, ?, ?)",
+    "bindings": [
+        101,
+        "Ada Lovelace",
+        "ada@example.com",
+        1,
+        102,
+        "Alan Turing",
+        null,
+        0,
+        103,
+        "Grace Hopper",
+        "grace@example.com",
+        1
+    ]
+}
+

@@ -1,13 +1,20 @@
 # Dalue - PHP Data Mapper
 
+[![CI](https://github.com/uuur86/dalue/actions/workflows/ci.yml/badge.svg)](https://github.com/uuur86/dalue/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/uuur86/dalue.svg)](https://packagist.org/packages/uuur86/dalue)
+[![PHP Version](https://img.shields.io/packagist/dependency-v/uuur86/dalue/php.svg)](https://packagist.org/packages/uuur86/dalue)
+[![License](https://img.shields.io/packagist/l/uuur86/dalue.svg)](LICENSE)
+
 The `Dalue` library provides a powerful, recursive, and memory-efficient method for data mapping and structural transformation in PHP. It allows you to ingest complex, unstructured data sets (like API responses or raw JSON payloads) and map them directly into strict domain models, NoSQL item structures, or specific array formats while optionally mutating the values during the allocation phase.
 
 It eliminates the need for repetitive array traversal, nested loops, and deep conditional type casting in your application layer.
 
 ## Requirements
 
-- PHP 7.4 or higher (PHP 8.x recommended).
-- [uuur86/strobj](https://github.com/uuur86/strobj) (Automatically installed via Composer).
+- PHP 7.4 or higher (tested on PHP 7.4 – 8.5).
+- [uuur86/strobj](https://github.com/uuur86/strobj) 3.x (installed automatically by Composer).
+
+Full documentation is available in the [wiki](https://github.com/uuur86/dalue/wiki).
 
 ## Installation
 
@@ -25,6 +32,21 @@ Dalue relies on a defined schema array where you specify the target structure. I
 2. **Recursive Array Mapping:** You can define nested arrays in your target schema.
 3. **Collection Merging (`[]` notation):** Automatically resolves and merges `has_many` relationships into structured row arrays.
 4. **On-the-fly Mutation:** Allows passing a callback function to manipulate keys and values (e.g., formatting dates, prefixing keys, casting types) during the mapping loop.
+5. **Predictable Missing Values:** Paths that do not exist in the source data return `null`, or the default you pass as the fourth argument. Stored values such as `false`, `0` and `''` are returned unchanged.
+
+### Schema Reference
+
+| Schema value | Result |
+| --- | --- |
+| `'@data/user/name'` | Value at `user/name`, or the default (`null`) when the path does not exist |
+| `'@data/items/*/sku'` | List with one `sku` per item (`null` for items without one) |
+| `['a' => ..., 'b' => ...]` | Nested schema, mapped recursively |
+| `'rows[]' => ['a' => '@data/items/*/a', ...]` | Columns turned into rows: `[['a' => ...], ['a' => ...]]` |
+| Anything else (`'text'`, `42`, `true`, `null`, objects) | Copied unchanged |
+
+```php
+Mapper::map(StringObjects $data, array $schema, ?callable $callback = null, $default = null): array
+```
 
 ---
 
@@ -89,6 +111,8 @@ Array
 
 You can perform complex transformations by providing a callback function as the third parameter. This is especially useful for formatting strings, rounding floats, or mutating specific fields during mapping.
 
+The callback receives the target key and the mapped value for every entry, including nested arrays and collections (children first, then their parent), and its return value is stored.
+
 ```php
 use Dalue\Mapper;
 use StrObj\StringObjects;
@@ -102,16 +126,23 @@ $schema = [
 ];
 
 $mappedData = Mapper::map(
-    $data, 
-    $schema, 
+    $data,
+    $schema,
     function (string $key, $value) {
         if ($key === 'userEmail') {
             return strtoupper($value);
         }
-        
+
         return $value;
     }
 );
+```
+
+### Default Values for Missing Paths
+
+```php
+$mappedData = Mapper::map($data, ['phone' => '@data/user/phone'], null, 'N/A');
+// ['phone' => 'N/A']
 ```
 
 ---
@@ -163,8 +194,8 @@ $schema = [
 
 // Step 1: Perform structural mapping and value mutations
 $mappedData = Mapper::map(
-    $stringObject, 
-    $schema, 
+    $stringObject,
+    $schema,
     function (string $key, $value) {
         if ($key === 'PK') {
             return 'ORDER#' . $value;
@@ -193,6 +224,31 @@ $dynamoDbClient->putItem([
 
 ---
 
+## Examples
+
+Runnable examples live in [`examples/`](examples). Clone the repository and run:
+
+```sh
+composer install
+php examples/01-basic-mapping.php   # one example
+composer examples                   # all examples
+```
+
+Each script's expected output is stored in [`examples/output/`](examples/output) and checked by the test suite. See [examples/README.md](examples/README.md) or the [Examples wiki page](https://github.com/uuur86/dalue/wiki/Examples).
+
+## Development
+
+```sh
+composer install
+composer test      # PHPUnit (includes the example output checks)
+composer examples  # Run all examples
+composer phpstan   # Static analysis
+composer cs        # PSR-12 coding standard
+composer check     # All of the above
+```
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes and [the migration guide](https://github.com/uuur86/dalue/wiki/Upgrading-to-StrObj-3) when upgrading from earlier versions.
+
 ## LICENSE
 
 This project is licensed under the GPL-3.0-or-later License. See the [LICENSE](LICENSE) file for more details.
@@ -203,7 +259,7 @@ Uğur Biçer - [@uuur86](https://github.com/uuur86)
 
 ## CONTRIBUTING
 
-If you want to contribute to this project, you can send pull requests. We expect all contributors to follow our [Code of Conduct](CONTRIBUTING.md).
+If you want to contribute to this project, you can send pull requests. Please read the [contributing guide](CONTRIBUTING.md) first.
 
 ## CONTACT
 
@@ -215,7 +271,7 @@ You can report bugs via GitHub issues.
 
 ## SECURITY
 
-If you find a security issue, please report it via email: [contact@codeplus.dev](mailto:contact@codeplus.dev)
+If you find a security issue, please report it privately as described in [SECURITY.md](SECURITY.md).
 
 ## DONATE
 

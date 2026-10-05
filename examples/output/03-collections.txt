@@ -1,0 +1,51 @@
+== Without [] the columns are returned ==
+{
+    "lines": {
+        "sku": [
+            "ITEM-01",
+            null,
+            "ITEM-03"
+        ],
+        "quantity": [
+            2,
+            1,
+            5
+        ]
+    }
+}
+
+== With [] the columns become rows ==
+{
+    "order": "SO-1001",
+    "lines": [
+        {
+            "sku": "ITEM-01",
+            "quantity": 2
+        },
+        {
+            "sku": null,
+            "quantity": 1
+        },
+        {
+            "sku": "ITEM-03",
+            "quantity": 5
+        }
+    ]
+}
+
+== mergeColumns() can be used on its own ==
+[
+    {
+        "name": "Ann",
+        "score": 90
+    },
+    {
+        "name": "Bob",
+        "score": 75
+    },
+    {
+        "name": "Cid",
+        "score": null
+    }
+]
+

@@ -1,0 +1,66 @@
+== Mapped order ==
+{
+    "PK": "ORDER#tx_987654321",
+    "SK": "METADATA",
+    "CustomerId": "CUST-1002",
+    "TotalAmount": 150.5,
+    "OrderItems": [
+        {
+            "SKU": "ITEM-01",
+            "Quantity": 2,
+            "Price": 50.0
+        },
+        {
+            "SKU": "ITEM-02",
+            "Quantity": 1,
+            "Price": 50.5
+        }
+    ]
+}
+
+== DynamoDB item ==
+{
+    "PK": {
+        "S": "ORDER#tx_987654321"
+    },
+    "SK": {
+        "S": "METADATA"
+    },
+    "CustomerId": {
+        "S": "CUST-1002"
+    },
+    "TotalAmount": {
+        "N": "150.5"
+    },
+    "OrderItems": {
+        "L": [
+            {
+                "M": {
+                    "SKU": {
+                        "S": "ITEM-01"
+                    },
+                    "Quantity": {
+                        "N": "2"
+                    },
+                    "Price": {
+                        "N": "50"
+                    }
+                }
+            },
+            {
+                "M": {
+                    "SKU": {
+                        "S": "ITEM-02"
+                    },
+                    "Quantity": {
+                        "N": "1"
+                    },
+                    "Price": {
+                        "N": "50.5"
+                    }
+                }
+            }
+        ]
+    }
+}
+
